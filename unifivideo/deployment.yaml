@@ -3,6 +3,9 @@ kind: Deployment
 metadata:
   name: unifi-video
   namespace: unifi
+  labels:
+    cattle.io/creator: norman
+    workload.user.cattle.io/workloadselector: deployment-unifi-unifi-video
 spec:
   progressDeadlineSeconds: 600
   replicas: 1
