@@ -14,4 +14,3 @@ spec:
       storage: 20Gi
   storageClassName: nfs-client
   volumeMode: Filesystem
-  volumeName: unifi-video
