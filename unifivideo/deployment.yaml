@@ -1,0 +1,110 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: unifi-video
+  namespace: unifi
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      workload.user.cattle.io/workloadselector: deployment-default-unifi-video
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    spec:
+      containers:
+      - env:
+        - name: CREATE_TMPFS
+          value: "no"
+        - name: TZ
+          value: Americas/Denver
+        image: pducharme/unifi-video-controller
+        imagePullPolicy: Always
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /
+            port: 7443
+            scheme: HTTPS
+          initialDelaySeconds: 30
+          periodSeconds: 2
+          successThreshold: 1
+          timeoutSeconds: 2
+        name: unifi-video
+        ports:
+        - containerPort: 10001
+          name: 10001udp100011
+          protocol: UDP
+        - containerPort: 7443
+          hostPort: 7443
+          name: 7443tcp74433
+          protocol: TCP
+        - containerPort: 7445
+          name: 7445tcp74453
+          protocol: TCP
+        - containerPort: 7446
+          name: 7446tcp74463
+          protocol: TCP
+        - containerPort: 7447
+          name: 7447tcp74473
+          protocol: TCP
+        - containerPort: 7442
+          name: 7442tcp74423
+          protocol: TCP
+        - containerPort: 6666
+          name: 6666tcp66663
+          protocol: TCP
+        - containerPort: 7080
+          name: 7080tcp70803
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /
+            port: 7443
+            scheme: HTTPS
+          initialDelaySeconds: 30
+          periodSeconds: 2
+          successThreshold: 2
+          timeoutSeconds: 2
+        resources: {}
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            add:
+            - DAC_READ_SEARCH
+          privileged: false
+          readOnlyRootFilesystem: false
+          runAsNonRoot: false
+        stdin: true
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        tty: true
+        volumeMounts:
+        - mountPath: /var/lib/unifi-video
+          name: unifi-video
+          subPath: data.20210908
+        - mountPath: /videos
+          name: unifi-video
+          subPath: videos.20210908
+        - mountPath: /var/cache/unifi-video
+          name: unifi-video
+          subPath: cache.20210908
+        - mountPath: /work
+          name: unifi-video
+          subPath: data
+      dnsConfig: {}
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - name: unifi-video
+        persistentVolumeClaim:
+          claimName: unifi-video
