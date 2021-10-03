@@ -7,6 +7,9 @@ spec:
   progressDeadlineSeconds: 600
   replicas: 1
   revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      workload.user.cattle.io/workloadselector: deployment-unifi-unifi-video
   strategy:
     rollingUpdate:
       maxSurge: 1
