@@ -5,9 +5,9 @@ metadata:
   namespace: unifi
 spec:
   ports:
-  - name: 7443tcp74433
+  - name: https
     nodePort: 31169
-    port: 7443
+    port: 443
     protocol: TCP
     targetPort: 7443
   - name: 7445tcp74453
