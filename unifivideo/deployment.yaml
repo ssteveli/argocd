@@ -17,8 +17,6 @@ spec:
     type: RollingUpdate
   template:
     metadata:
-      annotations:
-        field.cattle.io/ports: '[[{"containerPort":10001,"dnsName":"unifi-video-nodeport","hostPort":0,"kind":"NodePort","name":"10001udp100011","protocol":"UDP","sourcePort":10001},{"containerPort":7443,"dnsName":"unifi-video-loadbalancer","hostPort":7443,"kind":"LoadBalancer","name":"7443tcp74433","protocol":"TCP","sourcePort":7443},{"containerPort":7445,"dnsName":"unifi-video-loadbalancer","hostPort":0,"kind":"LoadBalancer","name":"7445tcp74453","protocol":"TCP","sourcePort":7445},{"containerPort":7446,"dnsName":"unifi-video-loadbalancer","hostPort":0,"kind":"LoadBalancer","name":"7446tcp74463","protocol":"TCP","sourcePort":7446},{"containerPort":7447,"dnsName":"unifi-video-loadbalancer","hostPort":0,"kind":"LoadBalancer","name":"7447tcp74473","protocol":"TCP","sourcePort":7447},{"containerPort":7442,"dnsName":"unifi-video-loadbalancer","hostPort":0,"kind":"LoadBalancer","name":"7442tcp74423","protocol":"TCP","sourcePort":7442},{"containerPort":6666,"dnsName":"unifi-video-loadbalancer","hostPort":0,"kind":"LoadBalancer","name":"6666tcp66663","protocol":"TCP","sourcePort":6666},{"containerPort":7080,"dnsName":"unifi-video-loadbalancer","hostPort":0,"kind":"LoadBalancer","name":"7080tcp70803","protocol":"TCP","sourcePort":7080}]]'
       labels:
         workload.user.cattle.io/workloadselector: deployment-unifi-unifi-video    
     spec:
