@@ -17,4 +17,4 @@ spec:
       storage: 1Gi
   storageClassName: nfs-client
   volumeMode: Filesystem
-  volumeName: pvc-7e55f1cb-6e1c-4559-8787-9c06c7cfa362
+  volumeName: heimdall
