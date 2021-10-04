@@ -6,8 +6,8 @@ metadata:
   finalizers:
   - kubernetes.io/pvc-protection
   labels:
-    app.kubernetes.io/name: heimdall-config
-  name: heimdall-config
+    app.kubernetes.io/name: heimdall
+  name: heimdall
   namespace: default
 spec:
   accessModes:
