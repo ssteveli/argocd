@@ -8,7 +8,7 @@ spec:
   - name: https
     port: 443
     protocol: TCP
-    targetPort: 80
+    targetPort: 8000
   selector:
     workload.user.cattle.io/workloadselector: deployment-services-bitwarden
   sessionAffinity: None
