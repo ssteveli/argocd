@@ -6,8 +6,8 @@ metadata:
   finalizers:
   - kubernetes.io/pvc-protection
   labels:
-    app.kubernetes.io/name: bitwarden
-  name: bitwarden
+    app.kubernetes.io/name: bitwarden-data
+  name: bitwarden-data
   namespace: services
 spec:
   accessModes:
