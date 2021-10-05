@@ -25,37 +25,15 @@ spec:
     spec:
       containers:
       - env:
-        - name: ROCKET_TLS
-          value: '{certs="/ssl/..2021_10_05_00_27_45.026229942/tls.crt",key="/ssl/..2021_10_05_00_27_45.026229942/tls.key"}'
         - name: ROCKET_PORT
           value: "8000"
         image: vaultwarden/server
         imagePullPolicy: IfNotPresent
-        livenessProbe:
-          failureThreshold: 3
-          httpGet:
-            path: /
-            port: 8000
-            scheme: HTTPS
-          initialDelaySeconds: 10
-          periodSeconds: 10
-          successThreshold: 1
-          timeoutSeconds: 2
         name: bitwarden
         ports:
-        - containerPort: 80
+        - containerPort: 8000
           name: https
           protocol: TCP
-        readinessProbe:
-          failureThreshold: 3
-          httpGet:
-            path: /
-            port: 8000
-            scheme: HTTPS
-          initialDelaySeconds: 10
-          periodSeconds: 10
-          successThreshold: 2
-          timeoutSeconds: 2
         resources: {}
         securityContext:
           allowPrivilegeEscalation: false
