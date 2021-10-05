@@ -25,6 +25,18 @@ spec:
     spec:
       containers:
       - env:
+        - name: YUBICO_CLIENT_ID
+          valueFrom:
+            secretKeyRef:
+              key: client_id
+              name: yubikey
+              optional: false
+        - name: YUBICO_SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              key: secret
+              name: yubikey
+              optional: false        
         - name: ROCKET_PORT
           value: "8000"
         image: vaultwarden/server
