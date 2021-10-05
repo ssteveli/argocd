@@ -27,6 +27,8 @@ spec:
       - env:
         - name: ROCKET_TLS
           value: '{certs="/ssl/tls.crt",key="/ssl/tls.key"}'
+        - name: ROCKET_PORT
+          value: "8000"
         image: vaultwarden/server
         imagePullPolicy: IfNotPresent
         livenessProbe:
