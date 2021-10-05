@@ -26,7 +26,7 @@ spec:
       containers:
       - env:
         - name: ROCKET_TLS
-          value: '{certs="/ssl/tls.crt",key="/ssl/tls.key"}'
+          value: '{certs="/ssl/..2021_10_05_00_27_45.026229942/tls.crt",key="/ssl/..2021_10_05_00_27_45.026229942/tls.key"}'
         - name: ROCKET_PORT
           value: "8000"
         image: vaultwarden/server
