@@ -6,8 +6,8 @@ metadata:
   finalizers:
   - kubernetes.io/pvc-protection
   labels:
-    app.kubernetes.io/name: heimdall
-  name: heimdall
+    app.kubernetes.io/name: bitwarden
+  name: bitwarden
   namespace: services
 spec:
   accessModes:
