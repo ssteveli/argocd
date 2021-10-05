@@ -2,17 +2,16 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    workload.user.cattle.io/workloadselector: deployment-default-heimdall
+    workload.user.cattle.io/workloadselector: deployment-services-heimdall
   name: heimdall
-  namespace: default
-  resourceVersion: "129514856"
+  namespace: services
 spec:
   progressDeadlineSeconds: 600
   replicas: 1
   revisionHistoryLimit: 10
   selector:
     matchLabels:
-      workload.user.cattle.io/workloadselector: deployment-default-heimdall
+      workload.user.cattle.io/workloadselector: deployment-services-heimdall
   strategy:
     rollingUpdate:
       maxSurge: 1
@@ -21,7 +20,7 @@ spec:
   template:
     metadata:
       labels:
-        workload.user.cattle.io/workloadselector: deployment-default-heimdall
+        workload.user.cattle.io/workloadselector: deployment-services-heimdall
     spec:
       containers:
       - env:
