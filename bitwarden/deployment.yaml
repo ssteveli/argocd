@@ -70,8 +70,6 @@ spec:
         volumeMounts:
         - mountPath: /data
           name: bitwarden-data
-        - mountPath: /ssl
-          name: bitwarden-certs 
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
@@ -81,8 +79,3 @@ spec:
       - name: bitwarden-data
         persistentVolumeClaim:
           claimName: bitwarden-data
-      - name: bitwarden-certs
-        secret:
-          defaultMode: 420
-          optional: false
-          secretName: bitwarden-certs
