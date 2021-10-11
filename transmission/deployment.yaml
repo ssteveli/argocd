@@ -1,0 +1,76 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    workload.user.cattle.io/workloadselector: deployment-transmission
+  name: transmission
+  namespace: transmission
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      workload.user.cattle.io/workloadselector: deployment-transmission
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        workload.user.cattle.io/workloadselector: deployment-transmission
+    spec:
+      containers:
+      - env:
+        - name: OPENVPN_PROVIDER
+          valueFrom:
+            secretKeyRef:
+              key: provider
+              name: transmission
+              optional: false
+        - name: OPENVPN_USERNAME
+          valueFrom:
+            secretKeyRef:
+              key: username
+              name: transmission
+              optional: false        
+        - name: OPENVPN_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: password
+              name: transmission
+              optional: false         
+        image: haugene/transmission-openvpn
+        imagePullPolicy: IfNotPresent
+        name: transmission
+        ports:
+        - containerPort: 9091
+          name: http
+          protocol: TCP
+        resources: {}
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            add:
+              - NET_ADMIN
+          privileged: false
+          readOnlyRootFilesystem: false
+          runAsNonRoot: false
+        stdin: true
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        tty: true
+        volumeMounts:
+        - mountPath: /data
+          name: transmission-data
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - name: transmission-data
+        persistentVolumeClaim:
+          claimName: transmission-data
