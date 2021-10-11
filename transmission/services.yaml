@@ -10,7 +10,7 @@ spec:
     protocol: TCP
     targetPort: 9091
   selector:
-    workload.user.cattle.io/workloadselector: deployment-transmission
+    app: transmission
   sessionAffinity: None
   type: LoadBalancer
 
