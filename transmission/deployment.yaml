@@ -24,6 +24,8 @@ spec:
     spec:
       containers:
       - env:
+        - name: LOCAL_NETWORK
+          value: 192.168.0.0/16
         - name: OPENVPN_PROVIDER
           valueFrom:
             secretKeyRef:
@@ -40,6 +42,12 @@ spec:
           valueFrom:
             secretKeyRef:
               key: password
+              name: transmission
+              optional: false         
+        - name: NORDVPN_COUNTRY
+          valueFrom:
+            secretKeyRef:
+              key: country
               name: transmission
               optional: false         
         image: haugene/transmission-openvpn
