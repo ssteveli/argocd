@@ -20,6 +20,10 @@ spec:
     port: 443
     protocol: TCP
     targetPort: 8443
+  - name: stun
+    port: 3478
+    protocol: UDP
+    targetPort: 3478
   selector:
     workload.user.cattle.io/workloadselector: apps.deployment-unifi-unifi-controller
   sessionAffinity: None
