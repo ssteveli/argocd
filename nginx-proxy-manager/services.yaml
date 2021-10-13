@@ -1,0 +1,51 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: db
+  namespace: nginx
+spec:
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: db
+    port: 3306
+    protocol: TCP
+    targetPort: 3306
+  selector:
+    workload.user.cattle.io/workloadselector: apps.deployment-nginx-db
+  sessionAffinity: None
+  type: ClusterIP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-proxy-manager-loadbalancer
+  namespace: nginx
+spec:
+  externalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: http
+    nodePort: 31834
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  - name: https
+    nodePort: 31474
+    port: 443
+    protocol: TCP
+    targetPort: 443
+  - name: admin
+    nodePort: 31143
+    port: 81
+    protocol: TCP
+    targetPort: 81
+  selector:
+    workload.user.cattle.io/workloadselector: apps.deployment-nginx-nginx-proxy-manager
+  sessionAffinity: None
+  type: LoadBalancer
