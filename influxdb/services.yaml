@@ -1,0 +1,20 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: influxdb-loadbalancer
+  namespace: services
+spec:
+  externalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: api
+    port: 8086
+    protocol: TCP
+    targetPort: 8086
+  selector:
+    app.kubernetes.io/instance: influxdb
+  sessionAffinity: None
+  type: LoadBalancer
