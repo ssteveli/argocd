@@ -5,7 +5,6 @@ metadata:
     workload.user.cattle.io/workloadselector: deployment-services-bitwarden
   name: bitwarden
   namespace: services
-  resourceVersion: "128973604"
 spec:
   progressDeadlineSeconds: 600
   replicas: 1
