@@ -1,12 +1,8 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  annotations:
-    volume.beta.kubernetes.io/storage-provisioner: cluster.local/thewell-nfs-client-provisioner
   finalizers:
   - kubernetes.io/pvc-protection
-  labels:
-    app.kubernetes.io/name: transmission-data
   name: transmission-data
   namespace: transmission
 spec:
