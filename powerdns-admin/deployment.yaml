@@ -23,7 +23,11 @@ spec:
       containers:
       - env:
         - name: SECRET_KEY
-          value: "no"
+          valueFrom:
+            secretKeyRef:
+              key: secret_key
+              name: powerdns-admin
+              optional: false
         image: ngoduykhanh/powerdns-admin:latest
         imagePullPolicy: IfNotPresent
         livenessProbe:
