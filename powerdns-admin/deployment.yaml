@@ -34,7 +34,7 @@ spec:
           failureThreshold: 3
           httpGet:
             path: /
-            port: 9191
+            port: 80
             scheme: HTTP
           initialDelaySeconds: 30
           periodSeconds: 2
@@ -42,14 +42,14 @@ spec:
           timeoutSeconds: 2
         name: powerdns-admin
         ports:
-        - containerPort: 9191
+        - containerPort: 80
           name: http
           protocol: TCP
         readinessProbe:
           failureThreshold: 3
           httpGet:
             path: /
-            port: 9191
+            port: 80
             scheme: HTTP
           initialDelaySeconds: 30
           periodSeconds: 2
