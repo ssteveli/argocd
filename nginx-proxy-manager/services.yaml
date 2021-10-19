@@ -24,6 +24,8 @@ kind: Service
 metadata:
   name: nginx-proxy-manager-loadbalancer
   namespace: nginx
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: nginx.internal
 spec:
   externalTrafficPolicy: Local
   ipFamilies:

@@ -4,6 +4,8 @@ kind: Service
 metadata:
   name: influxdb-loadbalancer
   namespace: services
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: influxdb.internal
 spec:
   externalTrafficPolicy: Cluster
   ipFamilies:

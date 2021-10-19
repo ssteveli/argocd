@@ -3,6 +3,8 @@ kind: Service
 metadata:
   name: unifi-video-loadbalancer
   namespace: unifi
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: unifivideo.internal
 spec:
   ports:
   - name: https

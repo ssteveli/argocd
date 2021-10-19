@@ -3,6 +3,8 @@ kind: Service
 metadata:
   name: heimdall-load-balancer
   namespace: services
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: heimdall.internal
 spec:
   ports:
   - name: http

@@ -4,6 +4,8 @@ kind: Service
 metadata:
   name: argocd-loadbalancer
   namespace: argocd
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: argocd.internal
 spec:
   externalTrafficPolicy: Cluster
   ipFamilies:

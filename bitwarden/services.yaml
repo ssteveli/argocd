@@ -3,6 +3,8 @@ kind: Service
 metadata:
   name: bitwarden-load-balancer
   namespace: services
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: bw.internal
 spec:
   ports:
   - name: https

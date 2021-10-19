@@ -3,6 +3,8 @@ kind: Service
 metadata:
   name: transmission-load-balancer
   namespace: transmission
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: transmission.internal
 spec:
   ports:
   - name: http
