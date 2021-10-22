@@ -20,7 +20,7 @@ spec:
       containers:
       - env:
         - name: CREATE_TMPFS
-          value: "no"
+          value: "yes"
         - name: TZ
           value: Americas/Denver
         image: pducharme/unifi-video-controller
