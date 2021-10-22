@@ -19,8 +19,16 @@ spec:
     spec:
       containers:
       - env:
+        - name: UMASK
+          value: '002'
+        - name: PUID
+          value: '957'
+        - name: PGID
+          value: '957'
+        - name: DEBUG
+          value: '1'
         - name: CREATE_TMPFS
-          value: "no"
+          value: 'no'
         - name: TZ
           value: Americas/Denver
         image: pducharme/unifi-video-controller
@@ -83,6 +91,10 @@ spec:
           capabilities:
             add:
             - DAC_READ_SEARCH
+            - NET_BIND_SERVICE
+            - SYS_PTRACE
+            - SETUID
+            - SETGID
           privileged: true
         stdin: true
         terminationMessagePath: /dev/termination-log
