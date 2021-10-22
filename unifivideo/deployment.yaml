@@ -95,15 +95,11 @@ spec:
         - mountPath: /var/lib/unifi-video
           name: unifi-video
           subPath: data.20210908
-        - mountPath: /videos
+        - mountPath: /var/lib/unifi-video/videos
           name: unifi-video
           subPath: videos.20211021
         - mountPath: /var/cache/unifi-video
-          name: unifi-video
-          subPath: cache.20211021
-        - mountPath: /work
-          name: unifi-video
-          subPath: data
+          name: cache-volume
       dnsConfig: {}
       dnsPolicy: ClusterFirst
       restartPolicy: Always
@@ -114,3 +110,5 @@ spec:
       - name: unifi-video
         persistentVolumeClaim:
           claimName: unifi-video
+      - name: cache-volume
+        emptyDir: {}
