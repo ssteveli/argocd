@@ -11,10 +11,7 @@ spec:
     matchLabels:
       workload.user.cattle.io/workloadselector: deployment-unifi-unifi-video
   strategy:
-    rollingUpdate:
-      maxSurge: 1
-      maxUnavailable: 0
-    type: RollingUpdate
+    type: Recreate
   template:
     metadata:
       labels:
@@ -27,7 +24,7 @@ spec:
         - name: TZ
           value: Americas/Denver
         image: pducharme/unifi-video-controller
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         livenessProbe:
           failureThreshold: 3
           httpGet:
