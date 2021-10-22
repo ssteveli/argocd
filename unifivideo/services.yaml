@@ -42,6 +42,14 @@ spec:
     port: 7080
     protocol: TCP
     targetPort: 7080
+  - port: 1935
+    targetPort: 1935
+    name: rtmp
+    protocol: TCP
+  - port: 7444
+    targetPort: 7444
+    name: rtmps
+    protocol: TCP   
   selector:
     workload.user.cattle.io/workloadselector: deployment-unifi-unifi-video
   sessionAffinity: None

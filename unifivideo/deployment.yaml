@@ -65,6 +65,12 @@ spec:
         - containerPort: 7080
           name: 7080tcp70803
           protocol: TCP
+        - containerPort: 1935
+          name: rtmp
+          protocol: TCP
+        - containerPort: 7444
+          name: rtmps
+          protocol: TCP        
         readinessProbe:
           failureThreshold: 3
           httpGet:
