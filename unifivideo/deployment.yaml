@@ -94,10 +94,10 @@ spec:
           subPath: data.20210908
         - mountPath: /videos
           name: unifi-video
-          subPath: videos.20210908
+          subPath: videos.20211021
         - mountPath: /var/cache/unifi-video
           name: unifi-video
-          subPath: cache.20210908
+          subPath: cache.20211021
         - mountPath: /work
           name: unifi-video
           subPath: data
