@@ -103,10 +103,10 @@ spec:
         volumeMounts:
         - mountPath: /var/lib/unifi-video
           name: unifi-video
-          subPath: data.20210908
+          subPath: data.20211022
         - mountPath: /videos
           name: unifi-video
-          subPath: videos.20211021
+          subPath: videos.20211022
         - mountPath: /var/cache/unifi-video
           name: unifi-cache
       dnsConfig: {}
