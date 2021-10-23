@@ -75,29 +75,29 @@ metadata:
   name: camera.mydomain.com
   namespace: shinobi
 
----
-apiVersion: v1
-kind: Ingress
-metadata:
-  annotations:
-    kubernetes.io/ingress.class: nginx
-    nginx.ingress.kubernetes.io/auth-realm: Authentication Required - camera.mydomain.com
-    nginx.ingress.kubernetes.io/auth-secret: camera.mydomain.com
-    nginx.ingress.kubernetes.io/auth-type: basic
-  name: camera.mydomain.com
-  namespace: shinobi
-spec:
-  rules:
-  - host: camera.mydomain.com
-    http:
-      paths:
-      - backend:
-          serviceName: shinobi-cctv
-          servicePort: 8080
-  tls:
-  - hosts:
-    - camera.mydomain.com
-    secretName: cert-mydomain-com
+# ---
+# apiVersion: v1
+# kind: Ingress
+# metadata:
+#   annotations:
+#     kubernetes.io/ingress.class: nginx
+#     nginx.ingress.kubernetes.io/auth-realm: Authentication Required - camera.mydomain.com
+#     nginx.ingress.kubernetes.io/auth-secret: camera.mydomain.com
+#     nginx.ingress.kubernetes.io/auth-type: basic
+#   name: camera.mydomain.com
+#   namespace: shinobi
+# spec:
+#   rules:
+#   - host: camera.mydomain.com
+#     http:
+#       paths:
+#       - backend:
+#           serviceName: shinobi-cctv
+#           servicePort: 8080
+#   tls:
+#   - hosts:
+#     - camera.mydomain.com
+#     secretName: cert-mydomain-com
 
 
 
