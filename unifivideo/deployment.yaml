@@ -104,7 +104,7 @@ spec:
         - mountPath: /var/lib/unifi-video
           name: unifi-video
           subPath: data.20211022
-        - mountPath: /videos
+        - mountPath: /var/lib/unifi-video/videos
           name: unifi-video
           subPath: videos.20211022
         - mountPath: /var/cache/unifi-video
