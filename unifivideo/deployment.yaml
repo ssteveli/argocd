@@ -31,7 +31,7 @@ spec:
           value: 'no'
         - name: TZ
           value: Americas/Denver
-        image: pducharme/unifi-video-controller:latest
+        image: pducharme/unifi-video-controller:3.10.8
         imagePullPolicy: IfNotPresent
         livenessProbe:
           failureThreshold: 3
