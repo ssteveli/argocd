@@ -23,7 +23,7 @@ metadata:
   namespace: shinobi
 
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
@@ -31,7 +31,7 @@ metadata:
     chart: shinobi-cctv-0.1
     heritage: ddk8s
     release: shinobi-cctv
-  name: shinobi-cctv
+    workload.user.cattle.io/workloadselector: deployment-shinobi-cctv
   namespace: shinobi
 spec:
   strategy:
@@ -40,6 +40,10 @@ spec:
     metadata:
       labels:
         app: shinobi-cctv
+        workload.user.cattle.io/workloadselector: deployment-services-bitwarden
+  selector:
+    matchLabels:
+      workload.user.cattle.io/workloadselector: deployment-shinobi-cctv
     spec:
       containers:
       - image: shinobisystems/shinobi:latest
@@ -72,7 +76,7 @@ metadata:
   namespace: shinobi
 
 ---
-apiVersion: extensions/v1beta1
+apiVersion: v1
 kind: Ingress
 metadata:
   annotations:
