@@ -67,14 +67,14 @@ spec:
           name: shinobi-cctv
         name: config
 
----
-apiVersion: v1
-data:
-  auth: http_encoded_auth_info
-kind: Secret
-metadata:
-  name: camera.mydomain.com
-  namespace: shinobi
+# ---
+# apiVersion: v1
+# data:
+#   auth: http_encoded_auth_info
+# kind: Secret
+# metadata:
+#   name: camera.mydomain.com
+#   namespace: shinobi
 
 # ---
 # apiVersion: v1
