@@ -106,7 +106,8 @@ spec:
           name: unifi-video
           subPath: videos.20211022
         - mountPath: /var/cache/unifi-video
-          name: unifi-cache
+          name: unifi-video
+          subPath: cache.20211022
       restartPolicy: Always
       volumes:
       - name: unifi-video
