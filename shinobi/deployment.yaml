@@ -43,7 +43,7 @@ spec:
     metadata:
       labels:
         app: shinobi-cctv
-        workload.user.cattle.io/workloadselector: deployment-services-bitwarden
+        workload.user.cattle.io/workloadselector: deployment-shinobi-cctv
     spec:
       containers:
       - image: shinobisystems/shinobi:latest
