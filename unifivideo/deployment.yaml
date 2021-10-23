@@ -4,9 +4,7 @@ metadata:
   name: unifi-video
   namespace: unifi
 spec:
-  progressDeadlineSeconds: 600
   replicas: 1
-  revisionHistoryLimit: 10
   selector:
     matchLabels:
       workload.user.cattle.io/workloadselector: deployment-unifi-unifi-video
@@ -109,12 +107,7 @@ spec:
           subPath: videos.20211022
         - mountPath: /var/cache/unifi-video
           name: unifi-cache
-      dnsConfig: {}
-      dnsPolicy: ClusterFirst
       restartPolicy: Always
-      schedulerName: default-scheduler
-      securityContext: {}
-      terminationGracePeriodSeconds: 30
       volumes:
       - name: unifi-video
         persistentVolumeClaim:
