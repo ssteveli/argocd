@@ -110,7 +110,6 @@ metadata:
     type: nfs
   name: shinobi-cctv
 spec:
-  storageClass: nfs-client
   accessModes:
   - ReadWriteMany
   capacity:
