@@ -32,6 +32,7 @@ metadata:
     heritage: ddk8s
     release: shinobi-cctv
     workload.user.cattle.io/workloadselector: deployment-shinobi-cctv
+  name: shinobi-cctv
   namespace: shinobi
 spec:
   strategy:
