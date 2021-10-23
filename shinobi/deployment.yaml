@@ -42,7 +42,7 @@ spec:
         app: shinobi-cctv
     spec:
       containers:
-      - image: docker.io/cr1st1p/shinobi-cctv:0.1
+      - image: shinobisystems/shinobi:latest
         name: shinobi-cctv
         resources: {}
         ports:
