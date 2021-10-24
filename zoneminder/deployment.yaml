@@ -43,7 +43,7 @@ spec:
         - name: MULTI_PORT_END
           value: "0"
         - name: TZ
-          value: "Americas/Denver"
+          value: "America/Denver"
         image: dlandon/zoneminder:latest
         imagePullPolicy: IfNotPresent
         name: zoneminder
