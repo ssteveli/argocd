@@ -44,7 +44,7 @@ spec:
           value: "0"
         - name: TZ
           value: "Ameria/Denver"
-        image: dlandon/zoneminder:lastest
+        image: dlandon/zoneminder:latest
         imagePullPolicy: IfNotPresent
         name: zoneminder
         ports:
