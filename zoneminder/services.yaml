@@ -10,11 +10,11 @@ spec:
   - name: http
     port: 80
     protocol: TCP
-    targetPort: 8080
+    targetPort: 80
   - name: https
     port: 443
     protocol: TCP
-    targetPort: 8443
+    targetPort: 443
   - name: events
     port: 9000
     protocol: TCP
