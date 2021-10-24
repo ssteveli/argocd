@@ -1,0 +1,76 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    workload.user.cattle.io/workloadselector: deployment-zoneminder
+  name: zoneminder
+  namespace: zoneminder
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      workload.user.cattle.io/workloadselector: deployment-zoneminder
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        workload.user.cattle.io/workloadselector: deployment-zoneminder
+    spec:
+      containers:
+      - env:       
+        - name: PUID
+          value: "99"
+        - name: PGID
+          value: "100"
+        - name: INSTALL_HOOK
+          value: "0"
+        - name: INSTALL_FACE
+          value: "0"
+        - name: INSTALL_TINY_YOLOV3
+          value: "0"
+        - name: INSTALL_YOLOV3
+          value: "0"
+        - name: INSTALL_TINY_YOLOV4
+          value: "0"
+        - name: INSTALL_YOLOV4
+          value: "0"
+        - name: MULTI_PORT_START
+          value: "0"
+        - name: MULTI_PORT_END
+          value: "0"
+        - name: TZ
+          value: "Ameria/Denver"
+        image: dlandon/zoneminder:lastest
+        imagePullPolicy: IfNotPresent
+        name: zoneminder
+        ports:
+        - containerPort: 8443
+          name: https
+          protocol: TCP        
+        - containerPort: 9000
+          name: events
+          protocol: TCP
+        resources: {}
+        securityContext:
+          privileged: false
+        volumeMounts:
+        - mountPath: /config
+          name: zoneminder
+          subPath: config.20211023
+        - mountPath: /var/cache/zoneminder
+          name: zoneminder
+          subPath: cache.20211023
+        - mountPath: /dev/shm
+          name: dshm
+      volumes:
+        - name: zoneminder
+          persistentVolumeClaim:
+            claimName: zoneminder
+        - name: dshm
+          emptyDir:
+              medium: Memory
+              sizeLimit: "5G"

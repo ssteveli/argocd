@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: zoneminder
+  namespace: zoneminder
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: zoneminder.internal
+spec:
+  ports:
+  - name: https
+    port: 443
+    protocol: TCP
+    targetPort: 8443
+  - name: events
+    port: 9000
+    protocol: TCP
+    targetPort: 9000
+  selector:
+    workload.user.cattle.io/workloadselector: deployment-zoneminder
+  sessionAffinity: None
+  type: LoadBalancer
+
