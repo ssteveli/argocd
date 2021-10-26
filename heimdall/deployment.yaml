@@ -60,8 +60,11 @@ spec:
           timeoutSeconds: 2
         resources:
           limits:
-            cpu: "0.5"
-            memory: "256M"
+            cpu: "1.0"
+            memory: "512M"
+          requests:
+            cpu: "2.0"
+            memory: "512M"
         volumeMounts:
         - mountPath: /config
           name: heimdall
