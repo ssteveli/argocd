@@ -118,9 +118,6 @@ spec:
   resources:
     requests:
       storage: 1Gi
-  selector:
-    matchLabels:
-      dedicated: shinobi-cctv
 
 ---
 apiVersion: v1
