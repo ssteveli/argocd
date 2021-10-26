@@ -60,10 +60,10 @@ spec:
           timeoutSeconds: 2
         resources:
           limits:
-            cpu: "1.0"
+            cpu: "1.5"
             memory: "512M"
           requests:
-            cpu: "2.0"
+            cpu: "1.0"
             memory: "512M"
         volumeMounts:
         - mountPath: /config
