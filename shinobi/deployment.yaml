@@ -76,6 +76,7 @@ spec:
         emptyDir:
             medium: Memory
             sizeLimit: "5G"
+
 # ---
 # apiVersion: v1
 # data:
@@ -137,13 +138,15 @@ metadata:
     chart: shinobi-cctv-0.1
     heritage: ddk8s
     release: shinobi-cctv
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: shinobi.internal  
   name: shinobi-cctv
   namespace: shinobi
 spec:
   ports:
-  - port: 8080
+  - port: 80
     protocol: TCP
     targetPort: 8080
   selector:
     app: shinobi-cctv
-  type: ClusterIP
+  type: LoadBalancer
