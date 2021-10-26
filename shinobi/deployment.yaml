@@ -53,8 +53,12 @@ spec:
         ports:
         - containerPort: 8080
         volumeMounts:
+        - mountPath: /var/lib/mysql
+          name: shinobi
+          subPath: mysql.20211024
         - mountPath: /opt/shinobi/videos
-          name: videos
+          name: shinobi
+          subPath: videos.20211024
         - mountPath: /config
           name: config
         - mountPath: /dev/shm
@@ -62,7 +66,7 @@ spec:
       securityContext:
         fsGroup: 101
       volumes:
-      - name: videos
+      - name: shinobi
         persistentVolumeClaim:
           claimName: shinobi-cctv
       - configMap:
