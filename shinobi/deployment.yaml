@@ -100,27 +100,6 @@ spec:
 #     - camera.mydomain.com
 #     secretName: cert-mydomain-com
 
-
-
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  labels:
-    dedicated: shinobi-cctv
-    type: nfs
-  name: shinobi-cctv
-spec:
-  accessModes:
-  - ReadWriteMany
-  capacity:
-    storage: 2Gi
-  nfs:
-    path: /mnt/export/shinobi-cctv
-    server: SOME_IP
-  persistentVolumeReclaimPolicy: Retain
-
-
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
