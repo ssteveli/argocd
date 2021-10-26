@@ -57,6 +57,8 @@ spec:
           name: videos
         - mountPath: /config
           name: config
+        - mountPath: /dev/shm
+          name: dshm      
       securityContext:
         fsGroup: 101
       volumes:
@@ -66,7 +68,10 @@ spec:
       - configMap:
           name: shinobi-cctv
         name: config
-
+      - name: dshm
+        emptyDir:
+            medium: Memory
+            sizeLimit: "5G"
 # ---
 # apiVersion: v1
 # data:
