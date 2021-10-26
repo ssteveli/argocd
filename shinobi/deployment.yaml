@@ -62,10 +62,10 @@ spec:
         - mountPath: /config
           name: config
         - mountPath: /dev/shm
-          name: dshm    
-      dnsPolicy: ClusterFirst  
+          name: dshm     
       securityContext:
         fsGroup: 101
+      dnsPolicy: ClusterFirst 
       volumes:
       - name: shinobi
         persistentVolumeClaim:

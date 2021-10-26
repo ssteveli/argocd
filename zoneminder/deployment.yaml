@@ -64,7 +64,7 @@ spec:
           requests:
             cpu: "1.0"
             memory: "1G"
-        dnsPolicy: ClusterFirst
+
         securityContext:
           privileged: true
         volumeMounts:
@@ -76,6 +76,7 @@ spec:
           subPath: cache.20211023
         - mountPath: /dev/shm
           name: dshm
+      dnsPolicy: ClusterFirst
       volumes:
         - name: zoneminder
           persistentVolumeClaim:
