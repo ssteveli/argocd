@@ -59,7 +59,7 @@ spec:
           protocol: TCP
         resources: {}
         securityContext:
-          privileged: false
+          privileged: true
         volumeMounts:
         - mountPath: /config
           name: zoneminder
