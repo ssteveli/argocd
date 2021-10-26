@@ -25,7 +25,7 @@ spec:
         livenessProbe:
           failureThreshold: 3
           httpGet:
-            path: /dashboard
+            path: /
             port: 3001
             scheme: HTTP
           initialDelaySeconds: 30
@@ -40,7 +40,7 @@ spec:
         readinessProbe:
           failureThreshold: 3
           httpGet:
-            path: /dashboard
+            path: /
             port: 3001
             scheme: HTTP
           initialDelaySeconds: 30
