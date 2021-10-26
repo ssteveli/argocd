@@ -59,12 +59,11 @@ spec:
           protocol: TCP
         resources:
           limits:
-            cpu: "2.0"
-            memory: "1G"
+            cpu: "4.0"
+            memory: "10G"
           requests:
-            cpu: "1.0"
-            memory: "1G"
-
+            cpu: "2.0"
+            memory: "10G"
         securityContext:
           privileged: true
         volumeMounts:
