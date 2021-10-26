@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    workload.user.cattle.io/workloadselector: deployment-kuma
+  name: kuma
+  namespace: services
+spec:
+  selector:
+    matchLabels:
+      workload.user.cattle.io/workloadselector: deployment-kuma
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        workload.user.cattle.io/workloadselector: deployment-kuma
+    spec:
+      containers:
+      - image: louislam/uptime-kuma:1
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /dashboard
+            port: 3001
+            scheme: HTTP
+          initialDelaySeconds: 30
+          periodSeconds: 2
+          successThreshold: 1
+          timeoutSeconds: 2
+        name: kuma
+        ports:
+        - containerPort: 3001
+          name: http
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /dashboard
+            port: 3001
+            scheme: HTTP
+          initialDelaySeconds: 30
+          periodSeconds: 2
+          successThreshold: 2
+          timeoutSeconds: 2
+        resources:
+          limits:
+            cpu: "0.5"
+            memory: "256M"
+          requests:
+            cpu: "0.5"
+            memory: "256M"
+        volumeMounts:
+        - mountPath: /app/data
+          name: kuma
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      volumes:
+      - name: kuma
+        persistentVolumeClaim:
+          claimName: kuma
