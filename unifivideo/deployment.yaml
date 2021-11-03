@@ -91,13 +91,7 @@ spec:
           periodSeconds: 2
           successThreshold: 2
           timeoutSeconds: 2
-        resources:
-          limits:
-            cpu: "4.0"
-            memory: "4G"
-          requests:
-            cpu: "3.0"
-            memory: "4G"
+        resources: {}
         securityContext:
           capabilities:
             add:
