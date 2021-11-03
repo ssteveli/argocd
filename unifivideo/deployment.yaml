@@ -9,7 +9,7 @@ spec:
     matchLabels:
       workload.user.cattle.io/workloadselector: deployment-unifi-unifi-video
   strategy:
-    type: Recreate
+    type: RollingUpdate
   template:
     metadata:
       labels:
