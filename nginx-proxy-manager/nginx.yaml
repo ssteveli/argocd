@@ -18,6 +18,13 @@ spec:
       labels:
         workload.user.cattle.io/workloadselector: apps.deployment-nginx-nginx-proxy-manager
     spec:
+      tolerations:
+      - key: node.kubernetes.io/not-ready
+        effect: NoExecute
+        tolerationSeconds: 0
+      - key: node.kubernetes.io/unreachable
+        effect: NoExecute
+        tolerationSeconds: 0
       containers:
       - env:
         - name: DB_MYSQL_HOST

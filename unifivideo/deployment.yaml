@@ -15,6 +15,13 @@ spec:
       labels:
         workload.user.cattle.io/workloadselector: deployment-unifi-unifi-video    
     spec:
+      tolerations:
+      - key: node.kubernetes.io/not-ready
+        effect: NoExecute
+        tolerationSeconds: 0
+      - key: node.kubernetes.io/unreachable
+        effect: NoExecute
+        tolerationSeconds: 0
       containers:
       - env:
         - name: UMASK
