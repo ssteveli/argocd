@@ -6,7 +6,7 @@ metadata:
   name: heimdall
   namespace: services
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       workload.user.cattle.io/workloadselector: deployment-services-heimdall
