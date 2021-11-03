@@ -28,7 +28,7 @@ spec:
       containers:
       - env:
         - name: DB_MYSQL_HOST
-          value: nginx-db.unifi.svc
+          value: nginx-db
         - name: DB_MYSQL_PORT
           value: "3306"
         - name: DB_MYSQL_USER
