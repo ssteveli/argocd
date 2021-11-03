@@ -8,8 +8,8 @@ metadata:
     metallb.universe.tf/allow-shared-ip: unificontroller
     external-dns.alpha.kubernetes.io/hostname: unifi.internal
 spec:
-  externalTrafficPolicy: Cluster
-  loadBalancerIP: 192.168.1.232
+  externalTrafficPolicy: Local
+  loadBalancerIP: 192.168.2.225
   ipFamilies:
   - IPv4
   ipFamilyPolicy: SingleStack
@@ -38,8 +38,8 @@ metadata:
   annotations:
     metallb.universe.tf/allow-shared-ip: unificontroller
 spec:
-  externalTrafficPolicy: Cluster
-  loadBalancerIP: 192.168.1.232
+  externalTrafficPolicy: Local
+  loadBalancerIP: 192.168.2.225
   ipFamilies:
   - IPv4
   ipFamilyPolicy: SingleStack
