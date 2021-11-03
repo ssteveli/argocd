@@ -15,4 +15,5 @@ spec:
     workload.user.cattle.io/workloadselector: deployment-kuma
   sessionAffinity: None
   type: LoadBalancer
+  externalTrafficPolicy: Local
 

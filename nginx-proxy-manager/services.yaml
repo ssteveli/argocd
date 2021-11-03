@@ -33,17 +33,14 @@ spec:
   ipFamilyPolicy: SingleStack
   ports:
   - name: http
-    nodePort: 31834
     port: 80
     protocol: TCP
     targetPort: 80
   - name: https
-    nodePort: 31474
     port: 443
     protocol: TCP
     targetPort: 443
   - name: admin
-    nodePort: 31143
     port: 81
     protocol: TCP
     targetPort: 81
