@@ -72,7 +72,7 @@ spec:
         volumeMounts:
         - mountPath: /var/lib/mysql
           name: db
-          subPath: db
+          subPath: 20211103/
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       volumes:

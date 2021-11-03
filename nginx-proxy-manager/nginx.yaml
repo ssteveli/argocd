@@ -92,10 +92,10 @@ spec:
         volumeMounts:
         - mountPath: /etc/letsencrypt
           name: nginx-proxy-manager
-          subPath: letsencrypt
+          subPath: 20211103/letsencrypt
         - mountPath: /data
           name: nginx-proxy-manager
-          subPath: data
+          subPath: 20211103/data
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       volumes:
