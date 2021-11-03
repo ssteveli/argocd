@@ -23,4 +23,5 @@ spec:
     workload.user.cattle.io/workloadselector: deployment-zoneminder
   sessionAffinity: None
   type: LoadBalancer
+  externalTrafficPolicy: Local
 

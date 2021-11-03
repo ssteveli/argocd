@@ -54,4 +54,5 @@ spec:
     workload.user.cattle.io/workloadselector: deployment-unifi-unifi-video
   sessionAffinity: None
   type: LoadBalancer
+  externalTrafficPolicy: Local
 

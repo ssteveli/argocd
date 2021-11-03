@@ -15,4 +15,5 @@ spec:
     app: transmission
   sessionAffinity: None
   type: LoadBalancer
+  externalTrafficPolicy: Local
 

@@ -15,4 +15,5 @@ spec:
     workload.user.cattle.io/workloadselector: deployment-powerdns-admin
   sessionAffinity: None
   type: LoadBalancer
+  externalTrafficPolicy: Local
 

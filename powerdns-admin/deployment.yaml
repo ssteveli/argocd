@@ -55,7 +55,13 @@ spec:
           periodSeconds: 2
           successThreshold: 2
           timeoutSeconds: 2
-        resources: {}
+        resources:
+          limits:
+            cpu: "1.5"
+            memory: "512M"
+          requests:
+            cpu: "1.0"
+            memory: "512M"
         securityContext:
           capabilities:
             add:

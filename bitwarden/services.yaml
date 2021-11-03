@@ -15,9 +15,9 @@ spec:
     port: 80
     protocol: TCP
     targetPort: 8000
-
   selector:
     workload.user.cattle.io/workloadselector: deployment-services-bitwarden
   sessionAffinity: None
   type: LoadBalancer
+  externalTrafficPolicy: Local
 
