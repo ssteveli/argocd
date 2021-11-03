@@ -1,0 +1,71 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: homeassistant-https
+  namespace: services
+spec:
+  entryPoints:
+    - websecure
+  tls: {}
+  routes:
+    - match: Host(`ha.internal`, `ha.stevelinck.com`)
+      kind: Rule
+      services:
+        - name: homeassistant@file
+          kind: TraefikService
+          scheme: http
+          port: 80
+
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: homeassistant-http
+  namespace: services
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`ha.internal`)
+      kind: Rule
+      services:
+        - name: homeassistant@file
+          kind: TraefikService
+          scheme: http
+          port: 80
+
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: bitwarden
+  namespace: services
+spec:
+  entryPoints:
+    - websecure
+  tls: {}
+  routes:
+    - match: Host(`bw.stevelinck.com`)
+      kind: Rule
+      services:
+        - name: bitwarden-load-balancer
+          kind: Service
+          scheme: http
+          port: 80
+
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: dashboard
+  namespace: traefik
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`traefik.internal`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
+      kind: Rule
+      services:
+        - name: api@internal
+          kind: TraefikService
