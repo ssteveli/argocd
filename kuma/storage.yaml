@@ -16,4 +16,3 @@ spec:
   resources:
     requests:
       storage: 20M
-  storageClassName: nfs-client
