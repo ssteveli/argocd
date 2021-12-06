@@ -107,18 +107,19 @@ spec:
         tty: true
         volumeMounts:
         - mountPath: /var/lib/unifi-video
-          name: unifi-video
-          subPath: data.20211022
+          name: unifi-video-data
         - mountPath: /var/lib/unifi-video/videos
-          name: unifi-video
-          subPath: videos.20211022
+          name: unifi-video-videos
         - mountPath: /var/cache/unifi-video
           name: unifi-cache
       restartPolicy: Always
       volumes:
-      - name: unifi-video
+      - name: unifi-video-videos
         persistentVolumeClaim:
-          claimName: unifi-video
+          claimName: unifi-video-videos
+      - name: unifi-video-data
+        persistentVolumeClaim:
+          claimName: unifi-video-data
       - name: unifi-cache
         emptyDir:
           medium: Memory

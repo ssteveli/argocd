@@ -1,7 +1,25 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: unifi-video
+  name: unifi-video-videos
+  namespace: unifi
+  finalizers:
+  - kubernetes.io/pvc-protection
+spec:
+  accessModes:
+  - ReadWriteOnce
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 100Gi
+  storageClassName: nfs-client
+  volumeMode: Filesystem
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: unifi-video-data
   namespace: unifi
   finalizers:
   - kubernetes.io/pvc-protection
@@ -12,5 +30,4 @@ spec:
   resources:
     requests:
       storage: 20Gi
-  storageClassName: nfs-client
   volumeMode: Filesystem
