@@ -9,7 +9,7 @@ spec:
     matchLabels:
       workload.user.cattle.io/workloadselector: deployment-unifi-unifi-video
   strategy:
-    type: RollingUpdate
+    type: Recreate
   template:
     metadata:
       labels:
@@ -113,4 +113,4 @@ spec:
       - name: unifi-cache
         emptyDir:
           medium: Memory
-          sizeLimit: "5Gi"
+          sizeLimit: 5Gi
