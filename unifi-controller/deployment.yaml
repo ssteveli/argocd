@@ -54,7 +54,7 @@ spec:
         volumeMounts:
         - mountPath: /config
           name: unifi-controller
-          subPath: "20211012"
+          subPath: "20211201"
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       volumes:
