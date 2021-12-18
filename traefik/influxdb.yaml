@@ -1,0 +1,24 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: influxdb
+  namespace: services
+  annotations:  
+    kubernetes.io/ingress.class: traefik
+  #   traefik.ingress.kubernetes.io/redirect-entry-point: https
+spec:
+  tls:
+    - hosts:
+      - influxdb.local.stevelinck.com
+  rules:
+    - host: influxdb.local.stevelinck.com
+      http:
+        paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: influxdb
+              port:
+                number: 8086

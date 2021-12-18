@@ -6,10 +6,13 @@ metadata:
   namespace: traefik
 data:
   traefik-config.yaml: |
-    ping: {}
     http:
       services:
         homeassistant:
           loadBalancer:
             servers:
             - url: "http://192.168.1.93:8123"
+        rockstor:
+          loadBalancer:
+            servers:
+            - url: "https://192.168.1.145"

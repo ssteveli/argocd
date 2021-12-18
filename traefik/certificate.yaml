@@ -1,0 +1,14 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: local.stevelinck.com
+  namespace: traefik
+spec:
+  secretName: local.stevelinck.com
+  issuerRef:
+    name: letsencrypt
+    kind: ClusterIssuer
+  commonName: local.stevelinck.com
+  dnsNames:
+  - 'local.stevelinck.com'
+  - '*.local.stevelinck.com'

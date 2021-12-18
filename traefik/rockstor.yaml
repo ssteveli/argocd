@@ -1,0 +1,17 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: rockstor
+  namespace: traefik
+spec:
+  entryPoints:
+    - websecure
+  tls:
+    secretName: local.stevelinck.com
+  routes:
+    - match: Host(`rockstor.local.stevelinck.com`)
+      kind: Rule
+      services:
+        - name: rockstor@file
+          kind: TraefikService
