@@ -39,13 +39,13 @@ spec:
         image: pducharme/unifi-video-controller:latest
         imagePullPolicy: IfNotPresent
         livenessProbe:
-          failureThreshold: 3
+          failureThreshold: 30
           httpGet:
             path: /
             port: 7443
             scheme: HTTPS
-          initialDelaySeconds: 30
-          periodSeconds: 2
+          initialDelaySeconds: 120
+          periodSeconds: 30
           successThreshold: 1
           timeoutSeconds: 2
         name: unifi-video
@@ -81,16 +81,6 @@ spec:
         - containerPort: 7444
           name: rtmps
           protocol: TCP        
-        readinessProbe:
-          failureThreshold: 3
-          httpGet:
-            path: /
-            port: 7443
-            scheme: HTTPS
-          initialDelaySeconds: 30
-          periodSeconds: 2
-          successThreshold: 2
-          timeoutSeconds: 2
         resources: {}
         securityContext:
           capabilities:
