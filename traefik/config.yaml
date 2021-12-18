@@ -7,12 +7,39 @@ metadata:
 data:
   traefik-config.yaml: |
     http:
+      serversTransports:
+        selfsigned:
+          insecureSkipVerify: true
       services:
+        plex:	
+          loadBalancer:	
+            servers:	
+            - url: "http://192.168.1.180:32400"	
+        proxmox:	
+          loadBalancer:	
+            serversTransport: selfsigned	
+            servers:	
+            - url: "https://pve1.internal:8006"
         homeassistant:
           loadBalancer:
             servers:
             - url: "http://192.168.1.93:8123"
         rockstor:
           loadBalancer:
+            serversTransport: selfsigned
             servers:
             - url: "https://192.168.1.145"
+      middlewares:	
+        default-headers:	
+          headers:	
+            frameDeny: true	
+            sslRedirect: true	
+            browserXssFilter: true	
+            contentTypeNosniff: true	
+            forceSTSHeader: true	
+            stsIncludeSubdomains: true	
+            stsPreload: true	
+            stsSeconds: 15552000	
+            customFrameOptionsValue: SAMEORIGIN	
+            customRequestHeaders:	
+              X-Forwarded-Proto: https

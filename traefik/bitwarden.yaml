@@ -1,0 +1,20 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  labels:
+    app.kubernetes.io/instance: traefik
+  name: bitwarden
+  namespace: services
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`bw.stevelinck.com`)
+      services:
+        - kind: Service
+          name: bitwarden-load-balancer
+          port: 80
+          scheme: http
+  tls: {}

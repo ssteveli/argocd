@@ -5,8 +5,7 @@ metadata:
   name: influxdb
   namespace: services
   annotations:  
-    kubernetes.io/ingress.class: traefik
-  #   traefik.ingress.kubernetes.io/redirect-entry-point: https
+    kubernetes.io/ingress.class: traefik-cert-manager
 spec:
   tls:
     - hosts:

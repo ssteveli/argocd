@@ -2,16 +2,41 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: homeassistant
-  namespace: traefik
+  annotations:
+  labels:
+    app.kubernetes.io/instance: traefik
+  name: homeassistant-http
+  namespace: services
+spec:
+  entryPoints:
+    - web
+  routes:
+    - kind: Rule
+      match: Host(`ha.internal`)
+      services:
+        - kind: TraefikService
+          name: homeassistant@file
+          port: 80
+          scheme: http
+
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  annotations:
+  labels:
+    app.kubernetes.io/instance: traefik
+  name: homeassistant-https
+  namespace: services
 spec:
   entryPoints:
     - websecure
-  tls:
-    secretName: local.stevelinck.com
   routes:
-    - match: Host(`homeassistant.local.stevelinck.com`)
-      kind: Rule
+    - kind: Rule
+      match: Host(`ha.internal`, `ha.stevelinck.com`)
       services:
-        - name: homeassistant@file
-          kind: TraefikService
+        - kind: TraefikService
+          name: homeassistant@file
+          port: 80
+          scheme: http
+  tls: {}
