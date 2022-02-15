@@ -1,0 +1,17 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: plex
+  namespace: traefik
+spec:
+  entryPoints:
+    - websecure
+  tls:
+    secretName: local.stevelinck.com
+  routes:
+    - match: Host(`plex.local.stevelinck.com`)
+      kind: Rule
+      services:
+        - name: plex@file
+          kind: TraefikService
