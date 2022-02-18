@@ -5,12 +5,18 @@ metadata:
   namespace: crowdsec
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      workload.user.cattle.io/workloadselector: deployment-traefik-crowdsec-bouncer
   strategy:
     rollingUpdate:
       maxSurge: 1
       maxUnavailable: 0
     type: RollingUpdate
   template:
+    metadata:
+      labels:
+        workload.user.cattle.io/workloadselector: deployment-traefik-crowdsec-bouncer
     spec:
       containers:
       - env:
