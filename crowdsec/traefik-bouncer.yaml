@@ -84,4 +84,4 @@ spec:
   selector:
     workload.user.cattle.io/workloadselector: deployment-traefik-crowdsec-bouncer
   sessionAffinity: None
-  type: Cluster
+  type: ClusterIP
