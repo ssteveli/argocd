@@ -67,3 +67,21 @@ spec:
             memory: "128M"
       dnsPolicy: ClusterFirst
       restartPolicy: Always
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: traefik-crowdsec-bouncer
+  namespace: crowdsec
+spec:
+  ports:
+  - name: http
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    workload.user.cattle.io/workloadselector: deployment-traefik-crowdsec-bouncer
+  sessionAffinity: None
+  type: Cluster
