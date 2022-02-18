@@ -1,8 +1,8 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
-  name: services-traefik-crowdsec-auth
-  namespace: traefik
+  name: crowdsec-auth
+  namespace: services
 spec:
   forwardAuth:
     address: >-
