@@ -13,6 +13,8 @@ spec:
   routes:
     - kind: Rule
       match: Host(`ha.internal`)
+      middlewares:
+        - name: crowdsec-auth
       services:
         - kind: TraefikService
           name: homeassistant@file
