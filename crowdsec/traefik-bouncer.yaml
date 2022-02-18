@@ -39,7 +39,7 @@ spec:
             path: /api/v1/ping
             port: 8080
             scheme: HTTP
-          initialDelaySeconds: 120
+          initialDelaySeconds: 15
           periodSeconds: 60
           successThreshold: 1
           timeoutSeconds: 2
@@ -54,7 +54,7 @@ spec:
             path: /api/v1/ping
             port: 8080
             scheme: HTTP
-          initialDelaySeconds: 120
+          initialDelaySeconds: 15
           periodSeconds: 10
           successThreshold: 2
           timeoutSeconds: 2
