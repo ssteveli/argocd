@@ -14,7 +14,7 @@ spec:
     - kind: Rule
       match: Host(`ha.internal`)
       middlewares:
-        - name: crowdsec-auth
+        - name: traefik-crowdsec-auth@kubernetescrd
       services:
         - kind: TraefikService
           name: homeassistant@file
@@ -37,7 +37,7 @@ spec:
     - kind: Rule
       match: Host(`ha.internal`, `ha.stevelinck.com`)
       middlewares:
-        - name: crowdsec-auth
+        - name: traefik-crowdsec-auth@kubernetescrd
       services:
         - kind: TraefikService
           name: homeassistant@file
