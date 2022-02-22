@@ -28,7 +28,7 @@ spec:
           value: "65534"
         - name: TZ
           value: Americas/Denver
-        image: linuxserver/heimdall
+        image: linuxserver/heimdall:2.2.2
         imagePullPolicy: IfNotPresent
         livenessProbe:
           failureThreshold: 3
