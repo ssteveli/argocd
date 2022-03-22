@@ -50,6 +50,8 @@ spec:
               key: password
               name: smtp
               optional: false
+        - name: SMTP_ACCEPT_INVALID_CERTS
+          value: true
         - name: YUBICO_CLIENT_ID
           valueFrom:
             secretKeyRef:
