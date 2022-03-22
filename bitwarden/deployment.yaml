@@ -22,6 +22,34 @@ spec:
     spec:
       containers:
       - env:
+        - name: SMTP_HOST
+          valueFrom:
+            secretKeyRef:
+              key: host
+              name: smtp
+              optional: false
+        - name: SMTP_PORT
+          valueFrom:
+            secretKeyRef:
+              key: port
+              name: smtp
+              optional: false
+        - name: SMTP_SECURITY
+          value: starttls
+        - name: SMTP_FROM
+          value: "vaultwarden@stevelinck.com"
+        - name: SMTP_USERNAME
+          valueFrom:
+            secretKeyRef:
+              key: username
+              name: smtp
+              optional: false
+        - name: SMTP_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: password
+              name: smtp
+              optional: false
         - name: YUBICO_CLIENT_ID
           valueFrom:
             secretKeyRef:
