@@ -66,6 +66,8 @@ spec:
               optional: false        
         - name: ROCKET_PORT
           value: "8000"
+        - name: DOMAIN
+          value: https://bw.stevelinck.com
         image: vaultwarden/server
         imagePullPolicy: IfNotPresent
         name: bitwarden
