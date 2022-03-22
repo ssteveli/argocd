@@ -51,7 +51,7 @@ spec:
               name: smtp
               optional: false
         - name: SMTP_ACCEPT_INVALID_CERTS
-          value: true
+          value: "true"
         - name: YUBICO_CLIENT_ID
           valueFrom:
             secretKeyRef:
